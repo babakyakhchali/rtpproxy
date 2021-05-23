@@ -40,7 +40,7 @@ int
 rtpp_subcommand_ul_opts_parse(const struct rtpp_cfg *cfsp,
   const struct rtpp_command_args *subc_args, struct after_success_h *asp)
 {
-    int mod_id, inst_id;
+    int mod_id, inst_id, ttl;
     const char *cp;
 
     switch(subc_args->v[0][0]) {
@@ -55,6 +55,23 @@ rtpp_subcommand_ul_opts_parse(const struct rtpp_cfg *cfsp,
         if (CALL_METHOD(cfsp->modules_cf, get_ul_subc_h, (unsigned)mod_id,
           (unsigned)inst_id, asp) != 0)
             return (-1);
+        break;
+
+    case 'T':
+    case 't':
+        cp = &subc_args->v[0][1];
+        if (cp[0] == 'r' || cp[0] == 'R')
+            cp += 1;
+        if (atoi_safe(cp, &ttl) != ATOI_OK)
+            return (-1);
+        if (ttl <= 0)
+            return (-1);
+#if 0
+        if (c == 't')
+            ulop->requested_sttl = n;
+        else
+            ulop->requested_pttl = n;
+#endif
         break;
 
     default:
