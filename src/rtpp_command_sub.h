@@ -34,6 +34,7 @@ struct rtpp_command_args;
 struct rtpp_subc_ctx {
     struct rtpp_session *sessp;
     struct rtpp_stream *strmp;
+    struct rtpp_stream *strmp_rev;
     const struct rtpp_command_args *subc_args;
 };
 

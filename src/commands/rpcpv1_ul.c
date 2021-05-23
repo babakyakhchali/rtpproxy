@@ -659,7 +659,7 @@ rtpp_command_ul_handle(const struct rtpp_cfg *cfsp, struct rtpp_command *cmd, in
     }
     if (ulop->after_success.handler != NULL) {
         struct rtpp_subc_ctx rsc = {.sessp = spa, .strmp = spa->rtp->stream[pidx],
-          .subc_args = &(cmd->subc_args)};
+          .strmp_rev = spa->rtp->stream[sidx], .subc_args = &(cmd->subc_args)};
         ulop->reply.subc_res = ulop->after_success.handler(ulop->after_success.arg, &rsc);
     }
     ul_reply_port(cmd, &ulop->reply);
