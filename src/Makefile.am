@@ -63,6 +63,7 @@ BASE_SOURCES=main.c rtp.h rtpp_server.c \
   rtpp_nofile.c rtpp_nofile.h rtpp_record_adhoc.h \
   $(CMDSRCDIR)/rpcpv1_norecord.c $(CMDSRCDIR)/rpcpv1_norecord.h \
   $(CMDSRCDIR)/rpcpv1_ul_subc.c $(CMDSRCDIR)/rpcpv1_ul_subc.h \
+  $(CMDSRCDIR)/rpcpv1_ul_subc_ttl.c $(CMDSRCDIR)/rpcpv1_ul_subc_ttl.h \
   $(RTPP_AUTOSRC_SOURCES) $(RTPP_AUTOSRC_SOURCES_S)
 ADV_DIR=$(top_srcdir)/src/advanced
 BASE_SOURCES+=$(ADV_DIR)/packet_observer.h $(ADV_DIR)/po_manager.c \
