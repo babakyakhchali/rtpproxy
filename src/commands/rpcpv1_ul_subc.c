@@ -77,7 +77,7 @@ rtpp_subcommand_ul_opts_parse(const struct rtpp_cfg *cfsp,
         if (tap == NULL)
             return (-1);
         *tap = ttl_arg;
-        asp->arg = tap;
+        asp->args.dyn = tap;
         asp->handler = rtpp_subcommand_ttl_handler;
         break;
 

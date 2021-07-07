@@ -151,7 +151,7 @@ rtpp_command_ul_opts_free(struct ul_opts *ulop)
     FREE_IF_NULL(ulop->codecs);
     FREE_IF_NULL(ulop->ia[0]);
     FREE_IF_NULL(ulop->ia[1]);
-    FREE_IF_NULL(ulop->after_success.arg);
+    FREE_IF_NULL(ulop->after_success.args.dyn);
     free(ulop);
 }
 
@@ -662,7 +662,7 @@ rtpp_command_ul_handle(const struct rtpp_cfg *cfsp, struct rtpp_command *cmd, in
         struct rtpp_subc_ctx rsc = {.sessp = spa, .strmp = spa->rtp->stream[pidx],
           .subc_args = &(cmd->subc_args)};
         rsc.strmp_rev = (sidx != -1) ? spa->rtp->stream[sidx] : NULL;
-        ulop->reply.subc_res = ulop->after_success.handler(ulop->after_success.arg, &rsc);
+        ulop->reply.subc_res = ulop->after_success.handler(&ulop->after_success.args, &rsc);
     }
     ul_reply_port(cmd, &ulop->reply);
     rtpp_command_ul_opts_free(ulop);

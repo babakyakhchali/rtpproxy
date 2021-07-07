@@ -25,6 +25,7 @@
  */
 
 struct rtpp_subc_ctx;
+struct after_success_h_args;
 
 enum rtpp_subcommand_ttl_direction {
     TTL_FORWARD = 0,
@@ -36,4 +37,5 @@ struct rtpp_subcommand_ttl {
     enum rtpp_subcommand_ttl_direction direction;
 };
 
-int rtpp_subcommand_ttl_handler(void *, const struct rtpp_subc_ctx *);
+int rtpp_subcommand_ttl_handler(const struct after_success_h_args *,
+  const struct rtpp_subc_ctx *);

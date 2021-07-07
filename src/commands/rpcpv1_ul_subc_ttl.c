@@ -31,15 +31,17 @@
 #include "rtpp_stream.h"
 #include "rtpp_ttl.h"
 #include "rtpp_command_sub.h"
+#include "commands/rpcpv1_ul.h"
 #include "commands/rpcpv1_ul_subc_ttl.h"
 
 int
-rtpp_subcommand_ttl_handler(void *ap, const struct rtpp_subc_ctx *rscp)
+rtpp_subcommand_ttl_handler(const struct after_success_h_args *ashap,
+  const struct rtpp_subc_ctx *rscp)
 {
     const struct rtpp_subcommand_ttl *tap;
     struct rtpp_stream *strmp;
 
-    tap = (struct rtpp_subcommand_ttl *)ap;
+    tap = (struct rtpp_subcommand_ttl *)ashap->dyn;
     switch (tap->direction) {
     case TTL_FORWARD:
         strmp = rscp->strmp;
